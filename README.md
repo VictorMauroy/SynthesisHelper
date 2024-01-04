@@ -44,6 +44,16 @@ Informations: Pictures and names. Pictures will redirect to the parent sheet.
 *Note: some monsters cannot be synthesized while some has many combinations paths.*
 
 ### Search and filter
+What is the most loved thing on a website that contains tons of datas ? A search tool!
+
+Players must be able to quickly **reach that tool from everywhere on the website**. Therefore, it will be added to the navigation bar.
+
+By typing a monster's name or the name of a family, the search tool will **show the most pertinents results**. Peoples will be able to click on one of those results and **be redirected to the matching sheet**.
+
+Additional filter:
+- Rank (could access a list of every monster that match the selected rank)
+- Game ID
+- English name show the french named monster
 
 ### Locator
 
@@ -51,5 +61,6 @@ Informations: Pictures and names. Pictures will redirect to the parent sheet.
 Tools that could be used later but aren't a priority : 
 - Boss guides
 - Stat Ranking
+- Skill collection
 
 *Note: the project could evolve depending of reviews and useful ideas. (Such an evidence)*
