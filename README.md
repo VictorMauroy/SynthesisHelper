@@ -19,6 +19,11 @@ Every monster will have the following **information displayed** :
 - Combinations (Classic)
 - Combinations (Special)
 
+**Optional datas**:
+- English name
+- Japanese name
+- Games, where it can be found
+
 ### Synthesis paths
 The synthesis paths or "combinations" tool will be showed inside every monster sheet. 
 
