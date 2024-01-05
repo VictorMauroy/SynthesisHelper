@@ -73,12 +73,12 @@ Tools that could be used later but aren't a priority :
 
 Here are a few commands that helped me to start the project. 
 
-After the creation of a folder. Add a solution (sln is the name of a template):
+After the creation of a folder. **Add a solution** (sln is the name of a template):
 ```
 dotnet new sln --name <SolutionName>
 ```
 
-Add a project (webapi is the name of a template):
+**Add a project** (webapi is the name of a template):
 ```
 dotnet new webapi --name <ProjectName>
 ```
@@ -88,7 +88,12 @@ Add the project to the solution (link both):
 dotnet sln add <./ProjectName/ProjectName.csproj>
 ```
 
-Useful:
+Add a special gitignore for dotnet/visual studio files:
 ```
 dotnet new gitignore
+```
+
+**Add a react project** (inside the api project):
+```
+npx create-react-app client-app
 ```
