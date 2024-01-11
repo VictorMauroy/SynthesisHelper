@@ -2,6 +2,17 @@ using Npgsql;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Database connection
+var constrBuilder = new NpgsqlConnectionStringBuilder(
+    builder.Configuration.GetConnectionString("WebApiDatabase")
+);
+
+builder.Services.AddDbContext<MonsterDbContext>(
+    options => options.UseNpgsql(
+        conStrBuilder.ConnectionString
+    )
+);
+
 
 // Add services to the container.
 
