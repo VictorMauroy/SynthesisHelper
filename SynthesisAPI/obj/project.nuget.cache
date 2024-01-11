@@ -1,12 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "oujk2cRMYRKAJaw56TeMw3vle8oU+8IoRWq0+izvwIf/gvo3xU9w2sJr9sqcCA0TkW5dEqWS3ChBIWFhoRCTRA==",
+  "dgSpecHash": "OkFw8sB1rljkt+UgzETGOxkP60w2VJvonWqT4fBBClmjMmI7Mww5+l9LLdBE8MsQ2wrrZw2Hobdcdf3PxeFV+w==",
   "success": true,
   "projectFilePath": "/home/tenkei/sites/lab/csharp/SynthesisHelper/SynthesisAPI/SynthesisAPI.csproj",
   "expectedPackageFiles": [
     "/home/tenkei/.nuget/packages/microsoft.aspnetcore.openapi/7.0.13/microsoft.aspnetcore.openapi.7.0.13.nupkg.sha512",
     "/home/tenkei/.nuget/packages/microsoft.extensions.apidescription.server/6.0.5/microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
+    "/home/tenkei/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/8.0.0/microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",
+    "/home/tenkei/.nuget/packages/microsoft.extensions.logging.abstractions/8.0.0/microsoft.extensions.logging.abstractions.8.0.0.nupkg.sha512",
     "/home/tenkei/.nuget/packages/microsoft.openapi/1.4.3/microsoft.openapi.1.4.3.nupkg.sha512",
+    "/home/tenkei/.nuget/packages/npgsql/8.0.1/npgsql.8.0.1.nupkg.sha512",
     "/home/tenkei/.nuget/packages/swashbuckle.aspnetcore/6.5.0/swashbuckle.aspnetcore.6.5.0.nupkg.sha512",
     "/home/tenkei/.nuget/packages/swashbuckle.aspnetcore.swagger/6.5.0/swashbuckle.aspnetcore.swagger.6.5.0.nupkg.sha512",
     "/home/tenkei/.nuget/packages/swashbuckle.aspnetcore.swaggergen/6.5.0/swashbuckle.aspnetcore.swaggergen.6.5.0.nupkg.sha512",

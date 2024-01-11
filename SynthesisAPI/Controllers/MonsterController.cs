@@ -7,7 +7,10 @@ namespace SynthesisAPI.Controllers;
 public class MonsterController : ControllerBase
 {
     // GET
-
+    [HttpGet]
+    public string Get(){
+        return "Your monster is ready.";
+    }
 
     // GET ALL
 
