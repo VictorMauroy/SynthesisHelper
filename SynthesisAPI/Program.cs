@@ -1,15 +1,21 @@
+using Microsoft.EntityFrameworkCore;
 using Npgsql;
+using SynthesisAPI.Models;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Database connection
 var constrBuilder = new NpgsqlConnectionStringBuilder(
-    builder.Configuration.GetConnectionString("WebApiDatabase")
-);
+    builder.Configuration.GetConnectionString("DefaultConnection")
+){
+    Username = builder.Configuration["DB_USERID"],
+    Password = builder.Configuration["DB_PASSWORD"]
+};
 
 builder.Services.AddDbContext<MonsterDbContext>(
     options => options.UseNpgsql(
-        conStrBuilder.ConnectionString
+        constrBuilder.ConnectionString
     )
 );
 
