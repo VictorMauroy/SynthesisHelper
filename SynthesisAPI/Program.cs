@@ -5,6 +5,7 @@ using SynthesisAPI.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
 // Database connection
 var constrBuilder = new NpgsqlConnectionStringBuilder(
     builder.Configuration.GetConnectionString("DefaultConnection")
