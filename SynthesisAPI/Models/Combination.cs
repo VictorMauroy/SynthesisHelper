@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SynthesisAPI.Models;
 
-public class MonsterCombination {
+public class Combination {
 
     [Column("id"), Key]
     public Guid CombinationId { get; set; } = Guid.NewGuid();

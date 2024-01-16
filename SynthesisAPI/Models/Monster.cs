@@ -41,10 +41,10 @@ public class Monster {
     
     // Relationship
     [Column("combinations")]
-    public List<MonsterCombination> Combinations { get; set; } = new();
+    public List<Combination> Combinations { get; set; } = new();
     
-    [Column("special_combinations")]
-    public List<MonsterCombination> SpecialCombinations { get; set; } = new List<MonsterCombination>();
+    // [Column("special_combinations")]
+    // public List<Combination> SpecialCombinations { get; set; } = new List<MonsterCombination>();
 
     /*
     Location with season
