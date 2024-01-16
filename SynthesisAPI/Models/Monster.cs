@@ -30,12 +30,12 @@ public class Monster {
 
 
     // Management
-    [Column("reservation_date")]
+    [Column("creation_date")]
     [DataType(DataType.Date)]
     [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
     public DateTime CreationDate { get; set; }
 
-    [Column("isactive")]
+    [Column("is_active")]
     public bool IsActive { get; set; } = true;
     
     

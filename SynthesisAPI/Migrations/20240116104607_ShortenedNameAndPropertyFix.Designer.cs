@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using SynthesisAPI.Models;
@@ -11,9 +12,11 @@ using SynthesisAPI.Models;
 namespace SynthesisAPI.Migrations
 {
     [DbContext(typeof(MonsterDbContext))]
-    partial class MonsterDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240116104607_ShortenedNameAndPropertyFix")]
+    partial class ShortenedNameAndPropertyFix
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
