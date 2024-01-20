@@ -12,11 +12,16 @@ public class MonsterController : ControllerBase
         _context = context;
     }
 
-    // GET
-    // [HttpGet("{id}")]
-    // public Task<ActionResult> Get(){
-    //     return ;
-    // }
+
+    [HttpGet("{id}")]
+    public async Task<ActionResult<Monster>> Get(int id){
+        Monster? monster = await _context.Monsters.FindAsync(id);
+        
+        if(monster == null)
+            return NotFound();
+
+        return Ok(monster);
+    }
 
     // GET ALL
 
