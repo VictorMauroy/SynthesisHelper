@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using SynthesisAPI.Models;
 
 namespace SynthesisAPI.Controllers;
 
@@ -6,11 +7,16 @@ namespace SynthesisAPI.Controllers;
 [Route("[controller]")]
 public class MonsterController : ControllerBase
 {
-    // GET
-    [HttpGet]
-    public string Get(){
-        return "Your monster is ready.";
+    private readonly MonsterDbContext _context;
+    public MonsterController(MonsterDbContext context){
+        _context = context;
     }
+
+    // GET
+    // [HttpGet("{id}")]
+    // public Task<ActionResult> Get(){
+    //     return ;
+    // }
 
     // GET ALL
 
