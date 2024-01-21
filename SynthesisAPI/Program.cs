@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Npgsql;
+using SynthesisAPI;
 using SynthesisAPI.Models;
 
 
@@ -27,6 +28,8 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddAutoMapper(typeof(AutoMapperProfile)); // Enable the custom mapping profile 
 
 builder.Services.AddCors(options => {
     options.AddPolicy("ReactPolicy",

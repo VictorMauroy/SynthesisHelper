@@ -1,4 +1,7 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using SynthesisAPI.Dtos;
 using SynthesisAPI.Models;
 
 namespace SynthesisAPI.Controllers;
@@ -8,13 +11,15 @@ namespace SynthesisAPI.Controllers;
 public class MonsterController : ControllerBase
 {
     private readonly MonsterDbContext _context;
-    public MonsterController(MonsterDbContext context){
+    private readonly IMapper _mapper;
+    public MonsterController(MonsterDbContext context, IMapper mapper){
         _context = context;
+        _mapper = mapper;
     }
 
 
     [HttpGet("{id}")]
-    public async Task<ActionResult<Monster>> Get(int id){
+    public async Task<ActionResult<Monster>> GetSingle(Guid id){
         Monster? monster = await _context.Monsters.FindAsync(id);
         
         if(monster == null)
@@ -24,7 +29,10 @@ public class MonsterController : ControllerBase
     }
 
     // GET ALL
-
+    [HttpGet]
+    public async Task<ActionResult<List<Monster>>> GetAll(){
+        return Ok(await _context.Monsters.ToListAsync());
+    }
     
     // Get lasts
 
@@ -33,7 +41,15 @@ public class MonsterController : ControllerBase
 
 
     // POST
+    [HttpPost]
+    public async Task<IActionResult> Create(CreateMonsterDto newMonster) 
+    {
+        Monster monster = _mapper.Map<Monster>(newMonster);
 
+        return Ok(await _context.Monsters.AddAsync(monster));
+
+        // Should use a try catch
+    }
 
     // PUT (EDIT)
 
