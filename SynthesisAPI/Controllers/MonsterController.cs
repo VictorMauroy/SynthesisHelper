@@ -58,7 +58,7 @@ public class MonsterController : ControllerBase
 
     // PUT (EDIT)
     [HttpPut]
-    public async Task<IActionResult> Update(UpdateMonsterDto updatedMonster){
+    public async Task<IActionResult> Update(UpdateMonsterDto updatedMonster) {
         Monster? monster = await _context.Monsters.FindAsync(updatedMonster.MonsterId);
         
         if(monster == null)
@@ -82,4 +82,15 @@ public class MonsterController : ControllerBase
     }
 
     // DELETE
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> Delete(Guid id) {
+        Monster? monster = await _context.Monsters.FindAsync(id);
+        
+        if(monster == null)
+            return NotFound();
+
+        _context.Monsters.Remove(monster);
+        _context.SaveChanges();
+        return Ok("The given monster has been deleted");
+    }
 }
