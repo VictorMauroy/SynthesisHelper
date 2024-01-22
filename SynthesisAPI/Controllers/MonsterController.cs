@@ -45,10 +45,15 @@ public class MonsterController : ControllerBase
     public async Task<IActionResult> Create(CreateMonsterDto newMonster) 
     {
         Monster monster = _mapper.Map<Monster>(newMonster);
+        monster.CreationDate = DateTime.UtcNow;
 
-        return Ok(await _context.Monsters.AddAsync(monster));
-
-        // Should use a try catch
+        try{
+            await _context.Monsters.AddAsync(monster);
+            _context.SaveChanges();
+            return Ok(monster);
+        } catch{
+            return BadRequest();
+        }
     }
 
     // PUT (EDIT)
