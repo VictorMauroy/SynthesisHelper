@@ -26,13 +26,13 @@ public class Monster {
     public required string Details { get; set; }
 
     [Column("statistics")]
-    public int[] Statistics { get; set; } = new int[5];
+    public int[] Statistics { get; set; } = new int[5] {0, 0, 0, 0, 0};
 
 
     // Management
     [Column("creation_date")]
-    [DataType(DataType.Date)]
-    [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+    [DataType(DataType.DateTime)]
+    // [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
     public DateTime CreationDate { get; set; }
 
     [Column("is_active")]
