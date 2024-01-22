@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Npgsql;
 using SynthesisAPI;
 using SynthesisAPI.Models;
+using SynthesisAPI.Services;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -30,6 +31,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddAutoMapper(typeof(AutoMapperProfile)); // Enable the custom mapping profile 
+builder.Services.AddScoped<ICombinationService, CombinationService>();
 
 builder.Services.AddCors(options => {
     options.AddPolicy("ReactPolicy",

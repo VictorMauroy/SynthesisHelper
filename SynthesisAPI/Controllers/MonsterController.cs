@@ -49,7 +49,7 @@ public class MonsterController : ControllerBase
 
         try{
             await _context.Monsters.AddAsync(monster);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
             return Ok(monster);
         } catch (Exception ex) {
             return BadRequest(ex.Message);
@@ -73,7 +73,7 @@ public class MonsterController : ControllerBase
             monster.Details = updatedMonster.Details;
             monster.Family = updatedMonster.Family;
 
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
             return Ok(monster);
 
         } catch (Exception ex) {
@@ -90,7 +90,7 @@ public class MonsterController : ControllerBase
             return NotFound();
 
         _context.Monsters.Remove(monster);
-        _context.SaveChanges();
+        await _context.SaveChangesAsync();
         return Ok("The given monster has been deleted");
     }
 }
