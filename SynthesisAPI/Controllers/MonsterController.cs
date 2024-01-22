@@ -51,13 +51,35 @@ public class MonsterController : ControllerBase
             await _context.Monsters.AddAsync(monster);
             _context.SaveChanges();
             return Ok(monster);
-        } catch{
-            return BadRequest();
+        } catch (Exception ex) {
+            return BadRequest(ex.Message);
         }
     }
 
     // PUT (EDIT)
+    [HttpPut]
+    public async Task<IActionResult> Update(UpdateMonsterDto updatedMonster){
+        Monster? monster = await _context.Monsters.FindAsync(updatedMonster.MonsterId);
+        
+        if(monster == null)
+            return NotFound();
 
+        try{
+            monster.Name = updatedMonster.Name;
+            monster.Rank = updatedMonster.Rank;
+            monster.Statistics = updatedMonster.Statistics;
+            monster.GameID = updatedMonster.GameID;
+            monster.Combinations = updatedMonster.Combinations;
+            monster.Details = updatedMonster.Details;
+            monster.Family = updatedMonster.Family;
+
+            _context.SaveChanges();
+            return Ok(monster);
+
+        } catch (Exception ex) {
+            return BadRequest(ex.Message);
+        }
+    }
 
     // DELETE
 }

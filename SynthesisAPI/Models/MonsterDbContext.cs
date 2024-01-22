@@ -13,8 +13,7 @@ public class MonsterDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        /* All the code below is UNECESSARY: (but nice to know) */
-
+        #region Optional (But it's nice to know how to edit that)
         // Explicit definition of the relation many-to-many between the two tables (Monster and MonsterCombination)
         modelBuilder.Entity<Combination>()
             .HasMany(c => c.MonstersToCombine) // One MonsterCombination has many Monsters
@@ -29,7 +28,7 @@ public class MonsterDbContext : DbContext
                 m => m.HasOne(typeof(Combination)).WithMany()
                     .HasForeignKey(nameof(Combination.CombinationId)).HasPrincipalKey(nameof(Combination.CombinationId))
             );
-
+        #endregion
 
         base.OnModelCreating(modelBuilder);
     }
