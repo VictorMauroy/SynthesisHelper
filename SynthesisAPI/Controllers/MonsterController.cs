@@ -69,9 +69,18 @@ public class MonsterController : ControllerBase
             monster.Rank = updatedMonster.Rank;
             monster.Statistics = updatedMonster.Statistics;
             monster.GameID = updatedMonster.GameID;
-            monster.Combinations = updatedMonster.Combinations;
             monster.Details = updatedMonster.Details;
             monster.Family = updatedMonster.Family;
+
+            // Delete ulterior combinations or compare. Then replace
+
+                // Empty list of list received: delete ulterior combinations
+
+                // Not empty: Compare the lists of monsters
+                    // Match : do not replace. Do not match : delete and replace
+
+
+            //monster.Combinations = updatedMonster.Combinations;
 
             await _context.SaveChangesAsync();
             return Ok(monster);
