@@ -8,4 +8,5 @@ public interface ICombinationService {
     Task<Combination> CreateAsync(List<Monster> monsters);
     Task UpdateAsync(Combination combination);
     Task DeleteAsync(Guid id);
+    Task DeleteMultipleAsync(List<Combination> combinations);
 }

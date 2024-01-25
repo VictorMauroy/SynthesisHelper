@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SynthesisAPI.Dtos;
 using SynthesisAPI.Models;
+using SynthesisAPI.Services;
 
 namespace SynthesisAPI.Controllers;
 
@@ -11,10 +12,12 @@ namespace SynthesisAPI.Controllers;
 public class MonsterController : ControllerBase
 {
     private readonly MonsterDbContext _context;
+    private readonly ICombinationService _combinationService;
     private readonly IMapper _mapper;
-    public MonsterController(MonsterDbContext context, IMapper mapper){
+    public MonsterController(MonsterDbContext context, IMapper mapper, ICombinationService combinationService){
         _context = context;
         _mapper = mapper;
+        _combinationService = combinationService;
     }
 
 
@@ -72,15 +75,16 @@ public class MonsterController : ControllerBase
             monster.Details = updatedMonster.Details;
             monster.Family = updatedMonster.Family;
 
-            // Delete ulterior combinations or compare. Then replace
+            // Remove all previous combinations
+            await _combinationService.DeleteMultipleAsync(monster.Combinations);
 
-                // Empty list of list received: delete ulterior combinations
-
-                // Not empty: Compare the lists of monsters
-                    // Match : do not replace. Do not match : delete and replace
-
-
-            //monster.Combinations = updatedMonster.Combinations;
+            // Add all the new combinations
+            foreach (List<Monster> newCombi in updatedMonster.Combinations)
+            {
+                monster.Combinations.Add(
+                    await _combinationService.CreateAsync(newCombi)
+                );
+            }
 
             await _context.SaveChangesAsync();
             return Ok(monster);

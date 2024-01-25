@@ -42,4 +42,13 @@ public class CombinationService : ICombinationService
         _ctx.Combinations.Update(combination);
         await _ctx.SaveChangesAsync();
     }
+
+    public async Task DeleteMultipleAsync(List<Combination> combinations)
+    {
+        foreach (Combination c in combinations)
+        {
+            _ctx.Remove(c);   
+        }
+        await _ctx.SaveChangesAsync();
+    }
 }
