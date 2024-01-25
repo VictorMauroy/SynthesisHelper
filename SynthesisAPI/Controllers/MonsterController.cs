@@ -78,7 +78,7 @@ public class MonsterController : ControllerBase
             // Remove all previous combinations
             await _combinationService.DeleteMultipleAsync(monster.Combinations);
 
-            // Add all the new combinations
+            // Add all new combinations
             foreach (List<Monster> newCombi in updatedMonster.Combinations)
             {
                 monster.Combinations.Add(
