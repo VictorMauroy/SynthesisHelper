@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
 using Npgsql;
+using Swashbuckle.AspNetCore.SwaggerGen;
 using SynthesisAPI;
 using SynthesisAPI.Models;
 using SynthesisAPI.Services;
@@ -28,7 +30,11 @@ builder.Services.AddDbContext<MonsterDbContext>(
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+
+// Add informations on the swagger menu.
+builder.Services.AddSwaggerGen( setupAction: swaggerGenOptions =>{
+    swaggerGenOptions.SwaggerDoc(name: "v1", info: new OpenApiInfo { Title = "Synthesis Helper", Version = "v1"});
+});
 
 builder.Services.AddAutoMapper(typeof(AutoMapperProfile)); // Enable the custom mapping profile 
 builder.Services.AddScoped<ICombinationService, CombinationService>();
