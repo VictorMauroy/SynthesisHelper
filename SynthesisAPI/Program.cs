@@ -55,6 +55,7 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    // http://localhost:5051/swagger/index.html
 }
 
 // Required in order to share data between the API and the React project.
