@@ -21,9 +21,9 @@ public class MonsterController : ControllerBase
     }
 
 
-    [HttpGet("{id}")]
-    public async Task<ActionResult<Monster>> GetSingle(Guid id){
-        Monster? monster = await _context.Monsters.FindAsync(id);
+    [HttpGet("{monsterId}")]
+    public async Task<ActionResult<Monster>> GetSingle(Guid monsterId){
+        Monster? monster = await _context.Monsters.FindAsync(monsterId);
         
         if(monster == null)
             return NotFound();
