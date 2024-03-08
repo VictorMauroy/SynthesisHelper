@@ -18,6 +18,7 @@ function App() {
             path=':monsterId' 
             element={ <Monster /> } 
             loader={async ({ params }) => {
+              console.log(params.monsterId);
               return fetch(
                 monsterApiUrl + `/Monster/${params.monsterId}.json`
               );

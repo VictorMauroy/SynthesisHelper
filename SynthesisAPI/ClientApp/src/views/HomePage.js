@@ -20,7 +20,8 @@ export default function HomePage() {
                 </a>
                 <br />
 
-                <Link to="/Monster/0">MONSTER GO !</Link>
+                <Link to="/Monster/e2bc8649-c032-4c85-b98c-eca14d58a860">MONSTER GO !</Link>
+                <Link to="/Monsters">All the monsters</Link>
             </header>
         </div>
     );
