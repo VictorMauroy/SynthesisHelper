@@ -9,9 +9,7 @@ export default function Monsters() {
         .then((data) => {
             setMonsterList(data)
         });
-    });
-
-    // Huge problem: I don't want the client app to spam to death the api!
+    }, []);
 
     console.log(monsterList + " are the data sended");
 

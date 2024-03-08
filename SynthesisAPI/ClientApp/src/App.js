@@ -5,7 +5,7 @@ import Monster from './views/Monster.js';
 import Monsters from './views/Monsters.js';
 import NotFound from './views/NotFound.js';
 
-const monsterApiUrl = 'http://localhost:3000';
+const monsterApiUrl = 'http://localhost:5051';
 
 function App() {
   return (
@@ -13,18 +13,8 @@ function App() {
       <Routes>
         <Route path='/' element={ <HomePage /> } />
 
-        <Route path='monsters' element= { <Monsters /> } >
-          <Route 
-            path=':monsterId' 
-            element={ <Monster /> } 
-            loader={async ({ params }) => {
-              console.log(params.monsterId);
-              return fetch(
-                monsterApiUrl + `/Monster/${params.monsterId}.json`
-              );
-            }}
-          />
-        </Route>
+        <Route path='monsters' element= { <Monsters /> } />
+        <Route path='Monster/:monsterId' element={ <Monster /> } />
 
         {/* <Route path="*" element={ <NotFound /> } /> */}
       </Routes>
