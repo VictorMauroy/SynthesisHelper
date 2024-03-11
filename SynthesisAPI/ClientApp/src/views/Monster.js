@@ -12,12 +12,17 @@ export default function Monster(props) {
     }
 
     useEffect( () => {
-        fetch(monsterApiUrl + "/Monster/" + monsterId)
-        .then(res => res.json())
-        .then((data) => {
-            setMonster(data)
-        });
-    }, []);
+        try {
+            fetch(monsterApiUrl + "/Monster/" + monsterId)
+            .then(res => res.json())
+            .then((data) => {
+                setMonster(data)
+            });
+        } catch(error) {
+            // TypeError: failed to fetch
+            console.log("Enable to reach monster API" + error);
+        }
+    }, []);    
 
     if(monster != null) {
         return(
