@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Monster from "./Monster";
 
 export default function Monsters() {
     const [monsterList, setMonsterList] = useState(null); 
@@ -19,7 +20,7 @@ export default function Monsters() {
             <div>
                 { monsterList && 
                     monsterList.map(data => (
-                        <p>{data.monsterId}</p>
+                        <Monster id={data.monsterId} />
                     ))
                 }
             </div>
