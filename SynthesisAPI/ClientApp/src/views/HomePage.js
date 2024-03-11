@@ -1,6 +1,6 @@
 import logo from '../logo.svg';
 import '../App.css';
-import { Link, Navigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default function HomePage() {
     return(

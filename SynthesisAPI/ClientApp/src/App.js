@@ -5,8 +5,6 @@ import Monster from './views/Monster.js';
 import Monsters from './views/Monsters.js';
 import NotFound from './views/NotFound.js';
 
-const monsterApiUrl = 'http://localhost:5051';
-
 function App() {
   return (
     <Router>
@@ -16,7 +14,7 @@ function App() {
         <Route path='monsters' element= { <Monsters /> } />
         <Route path='Monster/:monsterId' element={ <Monster /> } />
 
-        {/* <Route path="*" element={ <NotFound /> } /> */}
+        <Route path="*" element={ <NotFound /> } />
       </Routes>
     </Router>
   );
