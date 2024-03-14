@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Monster from "./Monster";
+import Monster from "../../components/Monster";
 
 export default function Monsters() {
     const [monsterList, setMonsterList] = useState(null); 

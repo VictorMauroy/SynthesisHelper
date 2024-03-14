@@ -2,7 +2,7 @@ import logo from '../logo.svg';
 import '../App.css';
 import { Link } from 'react-router-dom';
 
-export default function HomePage() {
+export default function Home() {
     return(
         <div className="App">
             <header className="App-header">
