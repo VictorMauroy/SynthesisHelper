@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import Monster from "../../components/Monster";
+import MonsterCard from "./MonsterCard.js";
 
-export default function Monsters() {
+export default function MonstersList() {
     const [monsterList, setMonsterList] = useState(null); 
     const [errorMessage, setErrorMessage] = useState(null);
     
@@ -25,18 +25,15 @@ export default function Monsters() {
     }, []);
 
     return(
-        <>
-            <h1>And there, a complete list of monsters!</h1>
-            <div>
+        <div>
                 { errorMessage && 
                     <p>The application encountered an error: {errorMessage} </p> }
                     
                 { monsterList && 
                     monsterList.map(data => (
-                        <Monster id={data.monsterId} />
+                        <MonsterCard id={data.monsterId} />
                     ))
                 }
-            </div>
-        </>
+        </div>
     );
 }
