@@ -27,6 +27,27 @@ export default function EditMonster() {
         fetchData();
     }, [monsterId]);
 
+    function handleNameChange(e) {
+        setMonster({
+            ...monster,
+            name: e.target.value
+        });
+    }
+
+    function handleGameIDChange(e) {
+        setMonster({
+            ...monster,
+            gameID: e.target.value
+        });
+    }
+
+    function handleDetailsChange(e) {
+        setMonster({
+            ...monster,
+            details: e.target.value
+        });
+    }
+
     if(monster != null) {
         return(
             <div>
@@ -34,14 +55,26 @@ export default function EditMonster() {
                 <h2>Editing {monster.name}</h2>
     
                 <form>
-                    
-                    <label for="monsterName" class="form-label">Name</label>
-                    <input type="text" id="monsterName" class="form-control" value={monster.name} aria-describedby="nameHelpBlock" />
-                    <div id="nameHelpBlock" class="form-text">
-                        Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
+
+                    <div className="form-group">
+                        <label className="form-label">Name</label>
+                        <input type="text" name="monsterName" className="form-control" onChange={handleNameChange} value={monster.name} aria-describedby="nameHelpBlock" />
+                        {/* <div id="nameHelpBlock" class="form-text">
+                            Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
+                        </div> */}
                     </div>
 
+                    <div className="form-group">
+                        <label className="form-label">Game ID</label>
+                        <input type="text" name="gameID" className="form-control" onChange={handleGameIDChange} value={monster.gameID} />
+                    </div>
+                    
                     <FamilySelector family={monster.family} />
+
+                    <div className="form-group">
+                        <label className="form-label">Details</label>
+                        <input type="text" name="details" className="form-control" onChange={handleDetailsChange} value={monster.details} />
+                    </div>
     
                 </form>
             </div>

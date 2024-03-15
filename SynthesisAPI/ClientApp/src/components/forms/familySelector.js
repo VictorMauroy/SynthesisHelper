@@ -14,17 +14,17 @@ export default function FamilySelector(props) {
     ];
 
     return(
-        <>
-            <label for="MonsterFamily" className="form-label">Family</label>
-            <select name="MonsterFamily" className="form-select">
+        <div className="form-group">
+            <label className="form-label">Family</label>
+            <select className="form-select" defaultValue={previousFamily}>
                 {
                     familyNames.map(family => (
                         family === previousFamily ?
-                            <option selected>{family}</option> :
-                            <option>{family}</option>
+                            <option key={family} value={family}>{family}</option> :
+                            <option key={family} value={family}>{family}</option>
                     ))
                 }
             </select>
-        </>
+        </div>
     );
 }
