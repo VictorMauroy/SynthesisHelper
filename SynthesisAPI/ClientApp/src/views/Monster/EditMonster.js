@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import FamilySelector from "../../components/forms/familySelector";
+import RankSelector from "../../components/forms/RankSelector";
 
 export default function EditMonster() {
     let { monsterId } = useParams();
@@ -70,6 +71,8 @@ export default function EditMonster() {
                     </div>
                     
                     <FamilySelector family={monster.family} />
+
+                    <RankSelector rank={monster.rank} />
 
                     <div className="form-group">
                         <label className="form-label">Details</label>

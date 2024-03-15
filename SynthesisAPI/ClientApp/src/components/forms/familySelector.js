@@ -16,7 +16,7 @@ export default function FamilySelector(props) {
     return(
         <div className="form-group">
             <label className="form-label">Family</label>
-            <select className="form-select" defaultValue={previousFamily}>
+            <select name="familySelect" className="form-select" defaultValue={previousFamily}>
                 {
                     familyNames.map(family => (
                         family === previousFamily ?
