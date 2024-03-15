@@ -31,7 +31,7 @@ export default function MonstersList() {
                     
                 { monsterList && 
                     monsterList.map(data => (
-                        <MonsterCard id={data.monsterId} />
+                        <MonsterCard key={data.monsterId} id={data.monsterId} />
                     ))
                 }
         </div>

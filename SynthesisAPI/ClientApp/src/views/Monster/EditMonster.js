@@ -49,6 +49,19 @@ export default function EditMonster() {
         });
     }
 
+    function handleStatisticsChange(e, index) {
+        setMonster({
+            ...monster,
+            statistics: monster.statistics.map((stat, i) => {
+                if(i === index) {
+                    return e.target.value;
+                } else {
+                    return stat;
+                }
+            })
+        });
+    }
+
     if(monster != null) {
         return(
             <div>
@@ -70,6 +83,7 @@ export default function EditMonster() {
                         <input type="text" name="gameID" className="form-control" onChange={handleGameIDChange} value={monster.gameID} />
                     </div>
                     
+                    {/* Penser à récupérer les valeurs et les stocker en onChange */}
                     <FamilySelector family={monster.family} />
 
                     <RankSelector rank={monster.rank} />
@@ -77,6 +91,20 @@ export default function EditMonster() {
                     <div className="form-group">
                         <label className="form-label">Details</label>
                         <input type="text" name="details" className="form-control" onChange={handleDetailsChange} value={monster.details} />
+                    </div>
+
+                    {/* Réussir à créer de quoi mettre à jour les statistiques */}
+                    <div className="input-group">
+                        <span className="input-group-text">Statistics</span>
+                        <input type="text" value={monster.statistics[0]} onChange={(evt) => handleStatisticsChange(evt, 0)} aria-label="Health" className="form-control" />
+                        {/* Oops, I forgot mana pool */}
+                        <input type="text" value={monster.statistics[1]} onChange={(evt) => handleStatisticsChange(evt, 1)} aria-label="Attack" className="form-control" />
+                        <input type="text" value={monster.statistics[2]} onChange={(evt) => handleStatisticsChange(evt, 2)} aria-label="Defense" className="form-control" />
+                        <input type="text" value={monster.statistics[3]} onChange={(evt) => handleStatisticsChange(evt, 3)} aria-label="Agility" className="form-control" />
+                        <input type="text" value={monster.statistics[4]} onChange={(evt) => handleStatisticsChange(evt, 4)} aria-label="Wisdom" className="form-control" />
+                    </div>
+                    <div  className="form-text">
+                        Enter the statistics in the order: Health, Attack, Defense, Agility, Wisdom.
                     </div>
     
                 </form>
