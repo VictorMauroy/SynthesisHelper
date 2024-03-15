@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const monsterApiUrl = 'http://localhost:5051';
 
@@ -43,6 +43,7 @@ export default function MonsterDetails() {
                             <p className="card-text">{monster.details}</p>
                         </div>
                     </div>
+                    <Link to={"../editMonster/" + monsterId}>Edit monster</Link>
                 </div>
             </div>
         );
