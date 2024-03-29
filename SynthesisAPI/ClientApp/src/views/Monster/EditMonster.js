@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import FamilySelector from "../../components/forms/familySelector";
+import { useNavigate, useParams } from "react-router-dom";
+import FamilySelector from "../../components/forms/FamilySelector";
 import RankSelector from "../../components/forms/RankSelector";
 
 export default function EditMonster() {
@@ -8,6 +8,7 @@ export default function EditMonster() {
     const [monster, setMonster] = useState(null);
     const [errorMessage, setErrorMessage] = useState(null);
     const monsterApiUrl = 'http://localhost:5051';
+    const navigate = useNavigate();
 
     useEffect( () => {
         const fetchData = async () => {
@@ -62,13 +63,48 @@ export default function EditMonster() {
         });
     }
 
+    function handleVisibilityChange(e) {
+        setMonster({
+            ...monster,
+            isActive: e.target.checked
+        });
+    }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        try {
+            const response = await fetch(
+                monsterApiUrl + "/Monster/Update", 
+                {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type':'application/json'
+                    },
+                    body: JSON.stringify(monster)
+                }
+            );
+
+            if(!response.ok)
+                throw new Error("Failed to submit form")
+
+            console.log("Form submitted successfully");
+
+            // Redirect 
+            navigate("../Monster/" + monsterId);
+
+        } catch(error) {
+            setErrorMessage("Error when submitting the form: " + error.message);
+        }
+    }
+
     if(monster != null) {
         return(
             <div>
     
                 <h2>Editing {monster.name}</h2>
     
-                <form>
+                <form onSubmit={handleSubmit}>
 
                     <div className="form-group">
                         <label className="form-label">Name</label>
@@ -106,7 +142,13 @@ export default function EditMonster() {
                     <div  className="form-text">
                         Enter the statistics in the order: Health, Attack, Defense, Agility, Wisdom.
                     </div>
-    
+
+                    <label className="form-check form-switch">
+                        <input className="form-check-input" name="visibility" checked={monster.isActive} onChange={handleVisibilityChange} type="checkbox" role="switch"/>
+                        <label className="form-check-label" >Public visibility</label>
+                    </label>
+                    
+                    <button type="submit" className="btn btn-primary">Save and update</button>
                 </form>
             </div>
         );
