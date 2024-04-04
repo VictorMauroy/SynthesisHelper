@@ -7,13 +7,13 @@ export default function EditMonster() {
     let { monsterId } = useParams();
     const [monster, setMonster] = useState(null);
     const [errorMessage, setErrorMessage] = useState(null);
-    const monsterApiUrl = 'http://localhost:5051';
+    const monsterApiUrl = 'http://localhost:5051/Monster/';
     const navigate = useNavigate();
 
     useEffect( () => {
         const fetchData = async () => {
             try {
-                const res = await fetch(monsterApiUrl + "/Monster/" + monsterId);
+                const res = await fetch(monsterApiUrl + monsterId);
 
                 if(!res.ok){
                     throw new Error("Cannot reach monster API");
@@ -73,29 +73,37 @@ export default function EditMonster() {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        try {
-            const response = await fetch(
-                monsterApiUrl + "/Monster/Update", 
-                {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type':'application/json'
-                    },
-                    body: JSON.stringify(monster)
+        let monsterJson = JSON.stringify(monster); 
+        alert(monsterJson);
+        console.log(monsterJson);
+
+        // PUT request using fetch with error handling
+        const requestOptions = {
+            method: 'PUT',
+            headers: { 'Content-Type':'application/json' },
+            body: JSON.stringify(monster)
+        };
+
+        fetch(monsterApiUrl, requestOptions)
+            .then(async response => {
+                const data = await response.json();
+
+                // check for error response
+                if (!response.ok) {
+                    // get error message from body or default to response status
+                    const error = (data && data.message) || response.status;
+                    return Promise.reject(error);
                 }
-            );
 
-            if(!response.ok)
-                throw new Error("Failed to submit form")
+                console.log("Form submitted successfully");
+                // Redirect 
+                navigate("../Monster/" + monsterId);
 
-            console.log("Form submitted successfully");
-
-            // Redirect 
-            navigate("../Monster/" + monsterId);
-
-        } catch(error) {
-            setErrorMessage("Error when submitting the form: " + error.message);
-        }
+            })
+            .catch(error => {
+                setErrorMessage("Error when submitting the form: " + error);
+                console.error('Error when submitting the form: ', error);
+            });
     }
 
     if(monster != null) {

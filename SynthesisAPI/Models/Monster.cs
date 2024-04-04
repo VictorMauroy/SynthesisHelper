@@ -33,7 +33,7 @@ public class Monster {
     [Column("creation_date")]
     [DataType(DataType.DateTime)]
     // [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-    public DateTime CreationDate { get; set; }
+    public DateTime CreationDate { get; set; } = DateTime.Now;
 
     [Column("is_active")]
     public bool IsActive { get; set; } = true;
